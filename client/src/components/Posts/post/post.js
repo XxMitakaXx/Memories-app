@@ -19,14 +19,14 @@ const Post = ({ post }) => {
 			</div>
 			<div className={classes.overlay2}>
                 <Button style={{color: 'white'}} size='small' onClick={() => {}}>
-					<MoreHorizIcon fontSize="default"/>
+					<MoreHorizIcon fontSize="default" />
 				</Button>
 			</div>
 			<div className={classes.details}>
-				<Typography variant="body2" color="textSecondary" >{post.tag.map((tag) => `#${tag} `)}</Typography>
+				<Typography variant="body2" color="textSecondary" >{post.tags.map((tag) => `#${tag} `)}</Typography>
 			</div>
 			<CardContent>
-				<Typography variant="h5" gutterBottom>{post.message}</Typography>
+				<Typography className={classes.title} variant="h5" gutterBottom>{post.message}</Typography>
 			</CardContent>
 			<CardActions className={classes.cardActions}>
 				<Button size="small" color="primary" onClick={() => {}}>
