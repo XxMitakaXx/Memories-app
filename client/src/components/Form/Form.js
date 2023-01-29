@@ -7,10 +7,10 @@ import useStyle from './styles';
 import { createPost, updatePost } from "../../actions/posts";
 
 const Form = ({ currentId, setCurrentId }) => {
-	const [postData, setPostsData] = useState({ creater: '', title: '', message: '', tags: '', selectedFile: ''	}) 
+	const [postData, setPostsData] = useState({ creator: '', title: '', message: '', tags: '', selectedFile: ''	}) 
 	const post = useSelector((state) => currentId ? state.posts.find((p) => p._id == currentId) : null);
-	const classes = useStyle();
 	const dispatch = useDispatch();
+	const classes = useStyle();
 
     useEffect(() => {
 		if (post) setPostsData(post);
@@ -25,17 +25,19 @@ const Form = ({ currentId, setCurrentId }) => {
 			dispatch(createPost(postData));
 		}
 
+		clear();
 	}
 
     const clear = () => {
-
+        setCurrentId(null)
+		setPostsData({ creator: '', title: '', message: '', tags: '', selectedFile: '' })
 	}
 
 	return (
 		<Paper className={classes.paper}>
 			<form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-                <Typography variant="h6">Creating a Memory</Typography>
-				<TextField name="creater" variant="outlined" label="Creater" fullWidth value={postData.creater} onChange={(e) => setPostsData({...postData, creater: e.target.value})}
+                <Typography variant="h6">{currentId ? 'Editing' : 'Creating'} a Memory</Typography>
+				<TextField name="creatonpr" variant="outlined" label="Creator" fullWidth value={postData.creator} onChange={(e) => setPostsData({...postData, creator: e.target.value})}
 				/>
 				<TextField name="title" variant="outlined" label="Title" fullWidth value={postData.title} onChange={(e) => setPostsData({...postData, title: e.target.value})}
 				/>
