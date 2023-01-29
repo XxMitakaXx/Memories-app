@@ -43,7 +43,7 @@ const Form = ({ currentId, setCurrentId }) => {
 				/>
 				<TextField name="message" variant="outlined" label="Message" fullWidth value={postData.message} onChange={(e) => setPostsData({...postData, message: e.target.value})}
 				/>
-				<TextField name="tags" variant="outlined" label="Tags" fullWidth value={postData.tags} onChange={(e) => setPostsData({...postData, tags: e.target.value})}
+				<TextField name="tags" variant="outlined" label="Tags" fullWidth value={postData.tags} onChange={(e) => setPostsData({...postData, tags: e.target.value.split(',')})}
 				/>
 			    <div className={classes.fileInput}>
 			    	<FileBase type="file" multiple={false}  onDone={ ({ base64 }) => setPostsData({ ... postData, selectedFile: base64 })} />
